@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<scene>
+    <viewport>
+        <width>1280</width>
+        <height>720</height>
+        <backgroundColor>0.0 0.0 0.0</backgroundColor>
+        <recursion>100</recursion>
+        <ambientIntensity>0.4 0.4 0.4</ambientIntensity>
+        <softLighting>1</softLighting>
+    </viewport>
+
+    <camera>
+        <position>-160.0 50.0 310.0</position>
+        <lookAt>0.0 20.0 80.0</lookAt>
+        <up>0.0 1.0 0.0</up>
+    </camera>
+
+    <projection type="Perspective">
+        <distance>50.0</distance>
+        <fov>65.0</fov>
+        <aspect>1.77</aspect>
+    </projection>
+
+<!--
+    <projection type="Ortographic">
+        <width>1280</width>
+        <height>720</height>
+    </projection>
+-->
+
+<!--
+    <projection type="SemisphericalFisheye">
+        <distance>50</distance>
+    </projection>
+-->
+
+    <!-- Lights -->
+    <light type="PointLight">
+        <position>-100.0 100.0 -80.0</position>
+        <intensity>500000 500000 100000</intensity>
+    </light>
+
+    <light type="SpotLight">
+        <position>-100.0 30.0 200.0</position>
+        <lookAt>-100.0 0.0 200.0</lookAt>
+        <aperture>35</aperture>
+        <attenuationExponent>15</attenuationExponent>
+        <intensity>500 500 500</intensity>
+    </light>
+    
+    <light type="SpotLight">
+        <position>-50.0 30.0 150.0</position>
+        <lookAt>-50.0 0.0 150.0</lookAt>
+        <aperture>30</aperture>
+        <attenuationExponent>0</attenuationExponent>
+        <intensity>500 500 500</intensity>
+    </light>
+    
+    <light type="DirectionalLight">
+        <position>-160 50 120</position>
+        <lookAt>-160 0 120</lookAt>
+        <radius>15</radius>
+        <intensity>100 100 100</intensity>
+        <attenuationExponent>0</attenuationExponent>
+    </light>
+
+    <light type="DirectionalLight">
+        <position>-160 50 200</position>
+        <lookAt>-160 0 200</lookAt>
+        <radius>15</radius>
+        <intensity>200 200 200</intensity>
+        <attenuationExponent>50</attenuationExponent>
+    </light>
+    <!-- /Lights -->
+
+    <!-- Materials -->
+
+    <!-- shader: opcional, por defecto PhongBlinn -->
+    <!-- specultarColor: opcional, si no se indica se utiliza diffuseColor -->
+    <!-- ambientColor: opcional, si no se indica se utiliza diffuseColor -->
+    <material
+        id="orange-sphere"
+        shader="PhongBlinn"
+        diffuseColor="1.0 0.27 0.0"
+        specularColor="1 1 1"
+        reflectionIndex="0.5"
+        refractionIndex="0"
+        shininess="200"
+    />
+
+    <material
+        id="green-sphere"
+        shader="PhongHorn"
+        diffuseColor="0.5 0.84 0.0"
+        reflectionIndex="0.8"
+        refractionIndex="0.0"
+        shininess="100"
+    />
+    
+    <material
+        id="purple-sphere"
+        diffuseColor="1.0 0.16 0.83"
+        reflectionIndex="0"
+        refractionIndex="0"
+    />
+    
+    <material
+        id="ground"
+        diffuseColor="0.78 0.78 0.78"
+        reflectionIndex="0.0"
+        refractionIndex="0.0"
+    />
+  
+    <material
+        id="left-wall"
+        diffuseColor="0.16 0.47 1.0"
+        reflectionIndex="0.0"
+        refractionIndex="0.0"
+    />
+    
+    <material
+        id="back-wall"
+        diffuseColor="0.3 0.1 0.0"
+        reflectionIndex="0.0"
+        refractionIndex="0.0"
+    />
+    
+    <material
+        id="right-wall"
+        diffuseColor="0.16 0.47 1.0"
+        reflectionIndex="0.3"
+        refractionIndex="0.0"
+        shininess="200"
+    />
+    
+    <material
+        id="purple-triangle"
+        diffuseColor="0.25 0.0 0.2"
+        reflectionIndex="0.2"
+        refractionIndex="0.0"
+    />
+    <!-- /Materials -->
+
+    <!-- Objects -->
+    <object id="naranja" type="Sphere">
+        <center>-50.0 20.0 100.0</center>
+        <radius>25.0</radius>
+        <material>orange-sphere</material>
+    </object>
+
+    <object id="verde" type="Sphere">
+        <center>0.0 20.0 130.0</center>
+        <radius>10</radius>
+        <material>green-sphere</material>
+    </object>
+
+    <object id="purpura" type="Sphere">
+        <center>-80.0 5 120.0</center>
+        <radius>8</radius>
+        <material>left-wall</material>
+        <material>purple-sphere</material>
+    </object>
+
+    <object id="ground" type="Plane">
+        <point>0.0 -4.0 0.0</point>
+        <normal>0.0 1.0 0.0</normal>
+        <material>ground</material>
+    </object>
+
+    <object id="back-wall" type="Plane">
+        <point>0.0 0.0 -500.0</point>
+        <normal>0.0 0.0 1.0</normal>
+        <material>back-wall</material>
+    </object>
+
+    <object id="right-wall" type="Plane">
+        <point>100.0 0.0 0.0</point>
+        <normal>-1.0 0.0 0.0</normal>
+        <material>right-wall</material>
+    </object>
+
+    <object id="left-wall" type="Plane">
+        <point>-200.0 0.0 0.0</point>
+        <normal>1.0 0.0 0.0</normal>
+        <material>left-wall</material>
+    </object>
+    
+    <object id="triangulo-morado" type="Triangle">
+        <vertex0>-170.0 80.0 0.0</vertex0>
+        <vertex1>-170.0 -4.0 0.0</vertex1>
+        <vertex2>-60.0 -4.0 -50.0</vertex2>
+        <material>purple-triangle</material>
+    </object>
+    <!-- /Objects -->
+</scene>
